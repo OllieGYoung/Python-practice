@@ -1,0 +1,30 @@
+"""
+Leet code solutions 
+"""
+"""
+Problem/solution 1: merge arrays 
+You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+"""
+# Essentially, the biggest number in each array is compared, the biggest between the two is added at the back of the final array
+# The number added is no longer considered
+# This loops until n>0
+# Assumes both arrays are already non-decreasing order
+class Solutions:
+    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+        self._final_array = nums1 + nums2
+        while n > 0:
+            if nums1[m-1] >= nums2[n-1] and m>0:
+                self._final_array[n+m -1] = nums1[m-1]
+                m -= 1
+            else:
+                self._final_array[n+m -1] = nums2[n-1]
+                n -= 1
+        return self._final_array
+# Create a solution obejct
+object_sol = Solutions()
+# Store .merge output into the object
+answer = object_sol.merge(nums1,m,nums2,n)
