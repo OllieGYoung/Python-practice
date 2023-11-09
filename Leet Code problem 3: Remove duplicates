@@ -42,18 +42,20 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 #####
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
+        # Initialise variables        
         k = []
         c = 0
         uniq = 0
         for num in nums:
             if num not in k:
+                # If int not in k arr, append & mute value at uniq value location
                 k.append(num)
                 nums[uniq] = nums[c]
                 c = c+1
                 uniq = uniq+1
             else:
                 c = c+1
-
+        # Return the len of the arr containing only unique values
         return len(k)
  
  
